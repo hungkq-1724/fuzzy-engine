@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
+
+namespace WebApplication2.Models
+{
+    [Table("Articles")]
+    public class Article
+    {
+        [Key]
+        public long Id { get; set; }
+
+        [Required]
+        [StringLength(200)]
+        public string Title { get; set; }
+
+        [Required]
+        public string Content { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public long AuthorId { get; set; }
+
+        [ForeignKey("AuthorId")]
+        public virtual User Author { get; set; }
+    }
+}

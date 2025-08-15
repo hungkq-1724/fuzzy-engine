@@ -18,7 +18,7 @@ namespace WebApplication2.Models
         [Required, StringLength(255)]
         public string Email { get; set; }
 
-        [Required, StringLength(50)]
+        [Required]
         public string Password { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

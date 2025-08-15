@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+}
+
+<h2>Đăng nhập</h2>
+
+@using (Html.BeginForm("Login", "Session", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Email hoặc Username</label>
+        <input type="text" name="identifier" required />
+    </div>
+    <div>
+        <label>Mật khẩu</label>
+        <input type="password" name="password" required />
+    </div>
+    <div>
+        <button type="submit">Đăng nhập</button>
+    </div>
+
+    if (ViewBag.Error != null)
+    {
+        <p style="color:red">@ViewBag.Error</p>
+    }
+}
+
+<hr />
+<p>
+    Chưa có tài khoản?
+    @Html.ActionLink("Đăng ký ngay", "Create", "Session")
+</p>

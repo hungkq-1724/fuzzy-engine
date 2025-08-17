@@ -1,33 +1,82 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<WebApplication2.Models.Article>
+@using System.Web
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<h2>Bảng tin</h2>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            @using (Html.BeginForm("CreateArticle", "Home", FormMethod.Post, new { id = "articleForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <input id="articleTitle"
+                       name="title"
+                       class="form-control mb-2"
+                       maxlength="200"
+                       placeholder="Tiêu đề" />
+
+                <textarea id="articleContent" name="content" class="form-control" rows="3" maxlength="2000" placeholder="Bạn đang nghĩ gì?"></textarea>
+                <div class="mt-2 d-flex justify-content-between">
+                    <small class="text-muted"><span id="charCount">0</span>/2000</small>
+                    <button type="submit" class="btn btn-primary">Đăng</button>
+                </div>
+                <div id="postError" class="text-danger mt-2"></div>
+            }
+        </div>
     </div>
-</main>
+}
+else
+{
+    <div class="alert alert-info">Hãy <a href="@Url.Action("Login","Session")">đăng nhập</a> để đăng bài.</div>
+}
+
+<div id="articlesList" data-delete-url="@Url.Action("DeleteArticle","Home")" data-like-url="@Url.Action("ToggleFavorite","Home")">
+    @foreach (var a in Model)
+    {
+        <div class="card my-2" data-id="@a.Id">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    @if (!string.IsNullOrEmpty(a.Author?.Avatar))
+                    {
+                        <img src="@a.Author.Avatar" class="rounded-circle me-2" style="width:32px;height:32px;" />
+                    }
+                    <strong>@(string.IsNullOrEmpty(a.Author?.Username) ? a.Author?.Email : a.Author?.Username)</strong>
+                    <small class="text-muted ms-2">@a.CreatedAt.ToLocalTime()</small>
+
+                    @* Chỉ hiện nút Xóa nếu là tác giả *@
+                    @if (User.Identity.IsAuthenticated && a.Author?.Email == User.Identity.Name)
+                    {
+                        <button type="button"
+                                class="btn btn-link btn-sm text-danger ms-auto btn-delete-article"
+                                data-id="@a.Id">
+                            Xóa
+                        </button>
+                    }
+                </div>
+
+                <h5 class="mb-2">@Html.Raw(HttpUtility.HtmlEncode(a.Title))</h5>
+                <div>@Html.Raw(HttpUtility.HtmlEncode(a.Content).Replace("\n", "<br/>"))</div>
+            </div>
+            <div class="card-footer">
+                <div class="ms-auto">
+                    <button type="button"
+                            class="btn btn-sm btn-outline-danger btn-like"
+                            data-id="@a.Id">
+                        ❤ <span class="like-count">@((a.Favorites != null) ? a.Favorites.Count : 0)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/home")
+}

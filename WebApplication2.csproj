@@ -151,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,6 +167,10 @@
     <Compile Include="Migrations\202508150001594_UpdatePasswordLength.Designer.cs">
       <DependentUpon>202508150001594_UpdatePasswordLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202508170935341_AddAvatarToUser.cs" />
+    <Compile Include="Migrations\202508170935341_AddAvatarToUser.Designer.cs">
+      <DependentUpon>202508170935341_AddAvatarToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Articles.cs" />
     <Compile Include="Models\ArticleTags.cs" />
@@ -174,6 +179,7 @@
     <Compile Include="Models\Favorites.cs" />
     <Compile Include="Models\Follows.cs" />
     <Compile Include="Models\Tags.cs" />
+    <Compile Include="Models\UpdateUserModel.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +239,7 @@
     <Content Include="Views\Shared\_DefaultLayout.cshtml" />
     <Content Include="Views\Session\_ViewStart.cshtml" />
     <Content Include="Views\Session\Login.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202508150001594_UpdatePasswordLength.resx">
       <DependentUpon>202508150001594_UpdatePasswordLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508170935341_AddAvatarToUser.resx">
+      <DependentUpon>202508170935341_AddAvatarToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

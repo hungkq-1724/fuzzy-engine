@@ -97,3 +97,4 @@ C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplica
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.UpdatePasswordLength.resources
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\NLog.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\NLog.xml
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.AddAvatarToUser.resources

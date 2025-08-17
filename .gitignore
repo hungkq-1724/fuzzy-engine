@@ -1,0 +1,47 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options directory
+.vs/
+
+# IIS Express
+.vsconfig
+.vscode/
+.vscode-test/
+
+# Resharper, Rider
+_ReSharper*/
+*.DotSettings.user
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+
+# Entity Framework Migrations (chỉ giữ code, bỏ metadata)
+*.Designer.cs
+*.edmx.*
+*.edmx.diagram
+
+# Logs
+*.log
+App_Data/*.mdf
+App_Data/*.ldf
+
+# Publish output
+publish/
+*.Publish.xml
+
+# Uploads
+Uploads/

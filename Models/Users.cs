@@ -22,6 +22,8 @@ namespace WebApplication2.Models
         public string Password { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public string Avatar { get; set; }
     }
 
     public partial class Users : DbContext

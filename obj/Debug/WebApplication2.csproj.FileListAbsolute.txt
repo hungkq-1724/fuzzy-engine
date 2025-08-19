@@ -1,8 +1,3 @@
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.AssemblyReference.cache
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.InitUsers.resources
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.InitialCreate.resources
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.GenerateResource.cache
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.CoreCompileInputs.cache
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\WebApplication2.dll.config
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\WebApplication2.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\WebApplication2.pdb
@@ -62,6 +57,7 @@ C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\EntityFramework.
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\Newtonsoft.Json.dll
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\NLog.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Buffers.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Memory.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Numerics.Vectors.dll
@@ -77,6 +73,7 @@ C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\WebGrease.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\BCrypt.Net-Next.xml
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\EntityFramework.xml
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\NLog.xml
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Buffers.xml
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Memory.xml
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Numerics.Vectors.xml
@@ -91,10 +88,13 @@ C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\System.Web.WebPa
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\Newtonsoft.Json.xml
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\Antlr3.Runtime.pdb
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.InitUsers.resources
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.InitialCreate.resources
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.UpdatePasswordLength.resources
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.AddAvatarToUser.resources
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.GenerateResource.cache
+C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.CoreCompileInputs.cache
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebAppli.0DB3FC1A.Up2Date
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.UpdatePasswordLength.resources
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\NLog.dll
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\bin\NLog.xml
-C:\Users\ADMIN\source\repos\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Migrations.AddAvatarToUser.resources

@@ -47,9 +47,6 @@ namespace WebApplication2.Controllers
                 db.UserSet.Add(user);
                 db.SaveChanges();
 
-                Session["UserId"] = user.Id;
-                Session["Username"] = user.Username;
-
                 return RedirectToAction("Index", "Home");
             }
 

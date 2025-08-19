@@ -26,5 +26,7 @@ namespace WebApplication2.Models
 
         [ForeignKey("AuthorId")]
         public virtual User Author { get; set; }
+
+        public virtual ICollection<Favorite> Favorites { get; set; } = new HashSet<Favorite>();
     }
 }

@@ -8,10 +8,9 @@ namespace WebApplication2.Models
 {
     public class UpdateUserModel
     {
-        [Required, StringLength(50)]
+        [StringLength(50)]
         public string Username { get; set; }
 
-        [Required, StringLength(255), EmailAddress]
-        public string Email { get; set; }
+        public string Avatar { get; set; }
     }
 }

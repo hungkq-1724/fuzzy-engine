@@ -1,0 +1,27 @@
+﻿@model WebApplication2.Models.UpdateUserModel
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Username</label>
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <p class="form-control-static">@ViewBag.email</p>
+    </div>
+
+    <div class="form-group">
+        <label>Avatar</label><br />
+        @if (!string.IsNullOrEmpty(Model.Avatar))
+        {
+            <img src="@Url.Content(Model.Avatar)" alt="Avatar" width="100" /><br />
+        }
+        <input type="file" name="avatarFile" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+}

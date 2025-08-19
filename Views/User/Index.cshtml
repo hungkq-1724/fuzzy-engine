@@ -1,3 +1,35 @@
-﻿@{
-    ViewBag.Title = "Account Information";
-}
+﻿@model WebApplication2.Models.User
+
+<h2>Thông tin cá nhân</h2>
+
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <td>@Model.Username</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Avatar</th>
+        <td>
+            @if (!string.IsNullOrEmpty(Model.Avatar))
+            {
+                <img src="@Model.Avatar" style="width:100px;height:100px;" />
+            }
+            else
+            {
+                <span>Chưa có avatar</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Ngày tạo</th>
+        <td>@Model.CreatedAt</td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Cập nhật thông tin", "Edit", "User", null, new { @class = "btn btn-primary" })
+</p>

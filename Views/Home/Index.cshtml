@@ -66,9 +66,15 @@ else
             <div class="card-footer">
                 <div class="ms-auto">
                     <button type="button"
-                            class="btn btn-sm btn-outline-danger btn-like"
+                            class="btn btn-sm btn-outline-secondary btn-like"
                             data-id="@a.Id">
                         ❤ <span class="like-count">@((a.Favorites != null) ? a.Favorites.Count : 0)</span>
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-sm btn-outline-secondary"
+                            onclick="location.href='@Url.Action("Show","Article", new { id = a.Id })'">
+                        <i class="bi bi-chat-left"></i> @((a.Comments != null) ? a.Comments.Count : 0)
                     </button>
                 </div>
             </div>

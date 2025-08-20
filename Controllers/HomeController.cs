@@ -16,6 +16,7 @@ namespace WebApplication2.Controllers
         {
             var articles = db.Articles
                 .Include("Author")
+                .Include("Comments")
                 .OrderByDescending(a => a.CreatedAt)
                 .Take(50)
                 .ToList();

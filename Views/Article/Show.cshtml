@@ -1,0 +1,49 @@
+﻿@model WebApplication2.Models.Article
+@using WebApplication2.Models
+@{
+    ViewBag.Title = Model.Title;
+    var comments = ViewBag.Comments as List<Comment>;
+}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h3>@Model.Title</h3>
+        <p>@Html.Raw(HttpUtility.HtmlEncode(Model.Content).Replace("\n", "<br/>"))</p>
+        <small class="text-muted">
+            Đăng bởi @(string.IsNullOrEmpty(Model.Author?.Username) ? Model.Author?.Email : Model.Author?.Username)
+            vào @Model.CreatedAt.ToLocalTime()
+        </small>
+    </div>
+</div>
+
+<h4>Bình luận</h4>
+
+@using (Html.BeginForm("AddComment", "Article", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("articleId", Model.Id)
+
+    <div class="mb-3">
+        <textarea name="body" class="form-control" rows="3" maxlength="1000" placeholder="Viết bình luận..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Gửi</button>
+}
+
+<hr />
+
+@if (comments != null && comments.Any())
+{
+    foreach (var c in comments)
+    {
+        <div class="mb-3">
+            <strong>@(string.IsNullOrEmpty(c.Author?.Username) ? c.Author?.Email : c.Author?.Username)</strong>
+            <small class="text-muted">@c.CreatedAt.ToLocalTime()</small>
+            <div>@Html.Raw(HttpUtility.HtmlEncode(c.Body).Replace("\n", "<br/>"))</div>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <p class="text-muted">Chưa có bình luận nào.</p>
+}

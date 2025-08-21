@@ -4,6 +4,8 @@ var $form = $("#articleForm");
 var $err = $("#postError");
 var $list = $("#articlesList");
 var $count = $("#charCount");
+var $tagInput = $("#articleTag");
+var $suggestions = $("#tagSuggestions");
 
 $txt.on("input", function () { $count.text($(this).val().length); });
 
@@ -12,6 +14,7 @@ $form.on("submit", function (e) {
 
     var title = $title.val().trim();
     var content = $txt.val().trim();
+    var tag = $tagInput.val().trim();
 
     if (!title) { $err.text("Tiêu đề không được trống."); return; }
     if (title.length > 200) { $err.text("Tiêu đề tối đa 200 ký tự."); return; }
@@ -23,7 +26,7 @@ $form.on("submit", function (e) {
     $.ajax({
         url: url,
         type: 'POST',
-        data: { __RequestVerificationToken: token, title: title, content: content },
+        data: { __RequestVerificationToken: token, title: title, content: content, tag },
         success: function (res) {
             if (res && res.success) {
                 window.location.reload()
@@ -91,4 +94,37 @@ $(document).on("click", ".btn-like", function (e) {
             alert("Lỗi: " + xhr.status + " " + xhr.statusText);
         }
     });
+});
+
+$tagInput.on("input", function () {
+    var q = $(this).val().trim();
+    if (q.length < 1) {
+        $suggestions.hide();
+        return;
+    }
+
+    $.get("/Home/SearchTags", { q: q }, function (data) {
+        if (data && data.length > 0) {
+            $suggestions.empty();
+            data.forEach(function (tag) {
+                var item = $("<button>")
+                    .addClass("list-group-item list-group-item-action")
+                    .text(tag)
+                    .on("click", function () {
+                        $tagInput.val(tag);
+                        $suggestions.hide();
+                    });
+                $suggestions.append(item);
+            });
+            $suggestions.show();
+        } else {
+            $suggestions.hide();
+        }
+    });
+});
+
+$(document).on("click", function (e) {
+    if (!$(e.target).closest("#articleTag, #tagSuggestions").length) {
+        $suggestions.hide();
+    }
 });

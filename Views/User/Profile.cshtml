@@ -1,0 +1,24 @@
+﻿@model WebApplication2.Models.ProfileViewModel
+
+<div class="d-flex align-items-center mb-3">
+    @if (!string.IsNullOrEmpty(Model.User.Avatar))
+    {
+        <img src="@Model.User.Avatar" class="rounded-circle me-2" style="width:48px;height:48px;" />
+    }
+    <h3>@(string.IsNullOrEmpty(Model.User.Username) ? Model.User.Email : Model.User.Username)</h3>
+
+    @if (User.Identity.IsAuthenticated && Model.User.Email != User.Identity.Name)
+    {
+        using (Html.BeginForm("ToggleFollow", "User", FormMethod.Post))
+        {
+            @Html.Hidden("id", Model.User.Id)
+            <button type="submit" class="btn btn-sm @(Model.IsFollowing ? "btn-danger" : "btn-primary") ms-3">
+                @(Model.IsFollowing ? "Bỏ theo dõi" : "Theo dõi")
+            </button>
+        }
+    }
+</div>
+
+<h4>Bài viết của @Model.User.Username</h4>
+
+@Html.Partial("_ArticleList", Model.Articles)

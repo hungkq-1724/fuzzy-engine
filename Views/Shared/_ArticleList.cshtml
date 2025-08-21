@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication2.Models.Article>
+@using System.Web
+
+
+<div id="articlesList" data-delete-url="@Url.Action("DeleteArticle","Home")" data-like-url="@Url.Action("ToggleFavorite","Home")">
+    @foreach (var a in Model)
+    {
+        <div class="card my-2" data-id="@a.Id">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    @if (!string.IsNullOrEmpty(a.Author?.Avatar))
+                    {
+                        <img src="@a.Author.Avatar" class="rounded-circle me-2" style="width:32px;height:32px;" />
+                    }
+                    <a href="@Url.Action("Profile","User", new { id = a.AuthorId })">
+                        <strong>@(string.IsNullOrEmpty(a.Author?.Username) ? a.Author?.Email : a.Author?.Username)</strong>
+                    </a>
+                    <small class="text-muted ms-2">@a.CreatedAt.ToLocalTime()</small>
+
+                    @if (User.Identity.IsAuthenticated && a.Author?.Email == User.Identity.Name)
+                    {
+                        <button type="button"
+                                class="btn btn-link btn-sm text-danger ms-auto btn-delete-article"
+                                data-id="@a.Id">
+                            Xóa
+                        </button>
+                    }
+                </div>
+                <h5>
+                    @Html.Raw(HttpUtility.HtmlEncode(a.Title)) @if (a.ArticleTags != null && a.ArticleTags.Any())
+                    {
+                        <i class="bi bi-arrow-right-short"></i>
+                        foreach (var at in a.ArticleTags)
+                        {
+                            <span class="badge bg-secondary">@at.Tag.Name</span>
+                        }
+                    }
+                </h5>
+                <div>@Html.Raw(HttpUtility.HtmlEncode(a.Content).Replace("\n", "<br/>"))</div>
+            </div>
+            <div class="card-footer d-flex">
+                <button type="button" class="btn btn-sm btn-outline-secondary btn-like" data-id="@a.Id">
+                    ❤ <span class="like-count">@((a.Favorites != null) ? a.Favorites.Count : 0)</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary ms-2"
+                        onclick="location.href='@Url.Action("Show","Article", new { id = a.Id })'">
+                    <i class="bi bi-chat-left"></i> @((a.Comments != null) ? a.Comments.Count : 0)
+                </button>
+            </div>
+        </div>
+    }
+</div>

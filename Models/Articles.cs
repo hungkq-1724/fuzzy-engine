@@ -28,5 +28,7 @@ namespace WebApplication2.Models
         public virtual User Author { get; set; }
 
         public virtual ICollection<Favorite> Favorites { get; set; } = new HashSet<Favorite>();
+
+        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }
